@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LS Media Lab | Social Media Management &amp; Content Creation</title>
+<meta name="description" content="LS Media Lab plans, shoots, posts and replies, so your pages stay busy while you run the business.">
+<meta property="og:title" content="LS Media Lab">
+<meta property="og:description" content="Social media management and content creation for small businesses and growing brands.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&h=630&q=70">
+<meta name="theme-color" content="#F4F4F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23151515'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='34' fill='%23F4F4F2' letter-spacing='-4'%3ELS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=70">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+/* Tokens. Light by default, dark follows the system. */
+:root{
+  --bg:#F4F4F2; --ink:#151515; --mute:#62625F; --line:rgba(21,21,21,.13);
+  --card:#E9E9E5; --card-2:#E2E2DD; --card-3:#DADAD4;
+  --inv-bg:#151515; --inv-ink:#F4F4F2; --inv-mute:#9C9C98;
+  --accent:#D6423A; --accent-soft:rgba(214,66,58,.12);
+  --phone:#0F0F0F; --screen:#FFFFFF; --screen-ink:#151515; --screen-mute:#7A7A77;
+  --shadow:0 30px 80px -30px rgba(21,21,21,.35);
+  --serif:"Cormorant Garamond", "Times New Roman", serif;
+  --sans:"Outfit", system-ui, sans-serif;
+  --r:18px; --nav:68px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121212; --ink:#EDEDEA; --mute:#A2A29E; --line:rgba(237,237,234,.14);
+    --card:#1B1B1A; --card-2:#202020; --card-3:#262625;
+    --inv-bg:#1C1C1B; --inv-ink:#EDEDEA; --inv-mute:#A2A29E;
+    --accent:#E2574F; --accent-soft:rgba(226,87,79,.16);
+    --screen:#0B0B0B; --screen-ink:#EDEDEA; --screen-mute:#8E8E8A;
+    --shadow:0 30px 80px -30px rgba(0,0,0,.8);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+em{font-style:italic}
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.display{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.06}
+.display em{font-weight:500}
+.eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:500}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* Buttons: always pills */
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font-weight:500;font-size:16px;white-space:nowrap;transition:transform .5s var(--ease),background .3s,color .3s,border-color .3s}
+.btn:active{transform:scale(.97)}
+.btn i{font-size:18px;transition:transform .5s var(--ease)}
+.btn:hover i{transform:translateX(4px)}
+.btn-ink{background:var(--ink);color:var(--bg)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+
+/* Progress + nav */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:60}
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;flex-direction:column;align-items:center;line-height:1}
+.logo .mono{font-family:var(--serif);font-weight:500;font-size:34px;letter-spacing:-.14em;margin-right:.14em;line-height:.9}
+.logo .sub{font-size:8px;letter-spacing:.22em;text-transform:uppercase;margin-top:3px;font-weight:500}
+.nav-links{display:flex;gap:34px;font-size:15px}
+.nav-links a{position:relative;color:var(--mute);transition:color .3s}
+.nav-links a:hover{color:var(--ink)}
+.nav .btn{height:42px;padding:0 20px;font-size:15px}
+@media (max-width:860px){.nav-links{display:none}}
+
+/* Hero */
+.hero{padding-top:calc(var(--nav) + 36px);padding-bottom:56px;min-height:100dvh;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(3rem,6vw,5.6rem);margin:22px 0 26px;padding-bottom:.08em}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.hero h1 .w>span{display:inline-block}
+.lede{font-size:clamp(1.05rem,1.35vw,1.2rem);color:var(--mute);max-width:44ch;font-weight:300}
+.cta-row{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+.hero-stage{position:relative;height:min(640px,calc(100dvh - 150px));min-height:520px}
+.stage-photo{position:absolute;left:0;top:9%;width:60%;height:74%;border-radius:var(--r);overflow:hidden}
+.stage-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+.phone{position:absolute;right:4%;top:0;height:100%;aspect-ratio:9/18.6;background:var(--phone);border-radius:46px;padding:9px;box-shadow:var(--shadow)}
+.screen{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:var(--screen);color:var(--screen-ink);display:flex;flex-direction:column}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:84px;height:24px;background:var(--phone);border-radius:20px;z-index:3}
+.app-top{padding:42px 16px 10px;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:14px}
+.app-top i{font-size:20px}
+.profile{display:flex;align-items:center;gap:14px;padding:4px 16px 10px}
+.avatar{width:62px;height:62px;border-radius:50%;padding:2.5px;background:conic-gradient(var(--accent),#151515,var(--accent));flex:none}
+.avatar span{width:100%;height:100%;border-radius:50%;background:var(--screen);border:2px solid var(--screen);display:grid;place-items:center;font-family:var(--serif);font-size:22px;letter-spacing:-.12em;padding-right:.1em}
+.bio{font-size:11.5px;line-height:1.45}
+.bio b{font-weight:600;font-size:12.5px;display:block}
+.bio span{color:var(--screen-mute)}
+.highlights{display:flex;gap:10px;padding:6px 16px 12px}
+.hl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9.5px;color:var(--screen-mute)}
+.hl img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid rgba(128,128,128,.3);padding:2px;background:var(--screen)}
+.tabs-ig{display:flex;border-top:1px solid rgba(128,128,128,.22)}
+.tabs-ig span{flex:1;display:grid;place-items:center;height:34px;font-size:17px;color:var(--screen-mute)}
+.tabs-ig span.on{color:var(--screen-ink);box-shadow:inset 0 -1.5px 0 var(--screen-ink)}
+.feed{flex:1;overflow:hidden;position:relative}
+.feed-track{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;animation:feed 46s linear infinite}
+.feed:hover .feed-track{animation-play-state:paused}
+@keyframes feed{to{transform:translateY(-50%)}}
+.tile{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:pointer;user-select:none;-webkit-user-select:none}
+.tile img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.tile .reel{position:absolute;top:5px;right:5px;color:#fff;font-size:13px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+.heart{position:absolute;left:50%;top:50%;font-size:38px;color:#fff;transform:translate(-50%,-50%) scale(0);pointer-events:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.toast{position:absolute;left:-2%;display:flex;align-items:center;gap:12px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:12px 16px 12px 12px;box-shadow:var(--shadow);font-size:13.5px;line-height:1.35;max-width:270px;opacity:0;z-index:4}
+.toast .ic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--card);font-size:18px;flex:none}
+.toast .ic.red{background:var(--accent-soft);color:var(--accent)}
+.toast b{font-weight:600;display:block}
+.toast span{color:var(--mute)}
+.t1{top:4%}.t2{top:44%}.t3{bottom:6%}
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero{min-height:auto}
+  .hero-stage{height:600px;min-height:0}
+  .stage-photo{width:62%;left:0}
+  .phone{right:0}
+}
+@media (max-width:560px){
+  .hero-stage{height:560px}
+  .phone{right:50%;transform:translateX(50%)}
+  .stage-photo{display:none}
+  .toast{left:0;max-width:230px;font-size:12.5px}
+  .t2{display:none}
+}
+
+/* Photo strip (from the Canva hero row) */
+.strip{padding:40px 0 140px}
+.strip-grid{display:grid;grid-template-columns:1.15fr .85fr 1fr .9fr;gap:14px;align-items:start}
+.strip figure{border-radius:var(--r);overflow:hidden}
+.strip figure img{width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
+.strip figure:nth-child(1){aspect-ratio:4/5;margin-top:60px}
+.strip figure:nth-child(2){aspect-ratio:3/4}
+.strip figure:nth-child(3){aspect-ratio:4/5;margin-top:120px}
+.strip figure:nth-child(4){aspect-ratio:3/4;margin-top:30px}
+@media (max-width:760px){
+  .strip{padding:20px 0 80px}
+  .strip-grid{grid-template-columns:1fr 1fr}
+  .strip figure:nth-child(n){margin-top:0}
+  .strip figure:nth-child(even){margin-top:48px}
+}
+
+/* About: the one dark block, as in the Canva draft */
+.about{background:var(--inv-bg);color:var(--inv-ink);border-radius:32px 32px 0 0;padding:140px 0 150px;position:relative}
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:72px;align-items:start}
+.about h2{font-size:clamp(2.6rem,4.6vw,4.4rem);margin-bottom:44px}
+.about-text{font-family:var(--serif);font-size:clamp(1.55rem,2.5vw,2.25rem);line-height:1.32;font-weight:500;letter-spacing:-.005em}
+.about-text .word{opacity:.17}
+.about-text strong{font-weight:600}
+.about-side{position:sticky;top:120px}
+.about-side figure{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5}
+.about-side img{width:100%;height:100%;object-fit:cover}
+.about-side p{margin-top:18px;color:var(--inv-mute);font-size:15px;max-width:34ch}
+@media (max-width:900px){
+  .about{padding:96px 0;border-radius:24px 24px 0 0}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+  .about-side{position:static}
+  .about-side figure{aspect-ratio:16/11}
+}
+
+/* Work: horizontal pan */
+.work{background:var(--bg)}
+.work-pin{height:100dvh;overflow:hidden;display:flex;align-items:center}
+.work-track{--ch:clamp(320px,calc(100dvh - 300px),620px);display:flex;gap:28px;padding:0 clamp(16px,5vw,72px);align-items:flex-start;will-change:transform}
+.work-intro{flex:0 0 auto;width:min(520px,38vw);align-self:center;padding-right:40px}
+.work-intro h2{font-size:clamp(3.6rem,8vw,8rem);line-height:.98;padding-bottom:.1em}
+.work-intro p{color:var(--mute);margin-top:20px;max-width:34ch}
+.wcard{flex:0 0 auto;width:calc(var(--ch) * .8)}
+.wimg{height:var(--ch);border-radius:var(--r);overflow:hidden;position:relative}
+.wimg img{width:120%;max-width:none;height:100%;object-fit:cover;margin-left:-10%;transition:scale .9s var(--ease)}
+.wcard:hover .wimg img{scale:1.04}
+.wmeta{padding-top:18px;display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.wmeta h3{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.1}
+.wmeta p{font-size:14px;color:var(--mute);margin-top:6px;max-width:36ch}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;list-style:none}
+.tags li{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--mute)}
+.wcard-end{width:calc(var(--ch) * .8);height:var(--ch);border-radius:var(--r);background:var(--card);display:flex;flex-direction:column;justify-content:space-between;padding:36px}
+.wcard-end h3{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,3.4vw,3.2rem);line-height:1.05}
+@media (max-width:900px){
+  .work{padding:96px 0 40px}
+  .work-pin{height:auto;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .work-pin::-webkit-scrollbar{display:none}
+  .work-track{--ch:min(105vw,480px);flex-wrap:nowrap;gap:16px;padding-right:16px}
+  .work-intro{display:none}
+  .wcard,.wcard-end{scroll-snap-align:start;width:78vw;max-width:380px}
+  .wimg,.wcard-end{height:auto;aspect-ratio:4/5}
+  .wimg img{width:100%;margin-left:0}
+  .work-intro-m{display:block!important;margin-bottom:28px}
+}
+.work-intro-m{display:none}
+.work-intro-m h2{font-size:clamp(3rem,13vw,4.5rem);line-height:1;padding-bottom:.1em}
+.work-intro-m p{color:var(--mute);margin-top:10px}
+
+/* Marquee */
+.marquee{padding:70px 0;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.marquee-track{display:flex;width:max-content}
+.marquee-set{display:flex;align-items:center}
+.marquee-set span{font-family:var(--serif);font-size:clamp(2.6rem,6vw,5.4rem);font-weight:500;padding:0 .35em;white-space:nowrap;line-height:1.1}
+.marquee-set span:nth-child(4n+3){font-style:italic;color:var(--mute)}
+.marquee-set i{color:var(--accent);font-size:clamp(1.4rem,2.8vw,2.4rem)}
+
+/* Services */
+.services{padding:150px 0 130px}
+.services h2{font-size:clamp(3rem,6vw,5.8rem);padding-bottom:.08em}
+.services .intro{color:var(--mute);margin-top:14px;font-size:1.1rem}
+.svc-list{margin-top:64px;border-top:1px solid var(--line)}
+.svc-row{width:100%;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 40px;gap:32px;align-items:center;text-align:left;padding:30px 0;border-bottom:1px solid var(--line);transition:padding .6s var(--ease)}
+.svc-name{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.4rem);line-height:1.05;transition:transform .6s var(--ease)}
+.svc-desc{color:var(--mute);font-size:16px;max-width:42ch;transition:color .4s}
+.svc-row>i{font-size:26px;justify-self:end;transition:transform .6s var(--ease),color .3s}
+.svc-media{display:none}
+@media (hover:hover) and (min-width:901px){
+  .svc-list:hover .svc-row{color:color-mix(in srgb,var(--ink) 38%,transparent)}
+  .svc-list:hover .svc-row:hover{color:var(--ink)}
+  .svc-row:hover .svc-name{transform:translateX(18px)}
+  .svc-row:hover>i{transform:rotate(45deg);color:var(--accent)}
+}
+.svc-preview{position:fixed;left:0;top:0;width:260px;height:330px;border-radius:var(--r);overflow:hidden;pointer-events:none;z-index:40;opacity:0;scale:.8;box-shadow:var(--shadow)}
+.svc-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.svc-preview img.on{opacity:1}
+@media (max-width:900px){
+  .services{padding:96px 0}
+  .svc-row{grid-template-columns:1fr 28px;gap:12px;padding:22px 0}
+  .svc-desc{display:none}
+  .svc-row>i{font-size:22px;transition:transform .4s var(--ease)}
+  .svc-row[aria-expanded="true"]>i{transform:rotate(45deg);color:var(--accent)}
+  .svc-media{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+  .svc-media.open{grid-template-rows:1fr}
+  .svc-media>div{overflow:hidden}
+  .svc-media p{color:var(--mute);padding:4px 0 14px;font-size:15.5px}
+  .svc-media img{border-radius:14px;aspect-ratio:16/10;width:100%;object-fit:cover;margin-bottom:22px}
+  .svc-preview{display:none}
+}
+
+/* Growth graph */
+.growth{padding:130px 0 150px;background:var(--card)}
+.growth-head{display:flex;flex-direction:column;gap:14px;max-width:760px}
+.growth h2{font-size:clamp(2.8rem,5.4vw,5.2rem);padding-bottom:.08em}
+.growth .intro{color:var(--mute);font-size:1.1rem;max-width:54ch}
+.chart-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:56px 0 26px}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.seg button{height:40px;padding:0 20px;border-radius:999px;font-size:15px;color:var(--mute);transition:color .3s,background .3s}
+.seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.legend{display:flex;gap:22px;font-size:14px;color:var(--mute)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend .sw{width:26px;height:0;border-top:2.5px solid var(--ink)}
+.legend .sw.dash{border-top:2px dashed var(--mute)}
+.chart{position:relative;height:clamp(300px,42vw,460px);background:var(--bg);border-radius:var(--r);padding:34px 34px 46px 34px}
+.chart-inner{position:relative;width:100%;height:100%}
+.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.chart .grid line{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.line-plan{fill:none;stroke:var(--ink);stroke-width:2.75;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.line-adhoc{fill:none;stroke:var(--mute);stroke-width:1.75;stroke-dasharray:5 6;vector-effect:non-scaling-stroke;opacity:.8}
+.area{fill:url(#areaGrad)}
+.xlabels{position:absolute;left:0;right:0;bottom:-34px;display:flex;justify-content:space-between;font-size:12.5px;color:var(--mute)}
+.ms{position:absolute;transform:translate(-50%,-50%);z-index:2;transition:left .9s var(--ease),top .9s var(--ease)}
+.ms .dot{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+.ms .lab{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--ink);color:var(--bg);font-size:12.5px;padding:6px 12px;border-radius:999px}
+.ms.right .lab{left:auto;right:-8px;transform:none}
+.chart-note{margin-top:22px;font-size:13.5px;color:var(--mute)}
+@media (max-width:700px){
+  .growth{padding:96px 0}
+  .chart{padding:22px 16px 40px 16px}
+  .ms .lab{font-size:11px;padding:4px 9px}
+  .ms.m1 .lab{left:0;transform:none}
+  .xlabels{font-size:11px}
+}
+
+/* Process: sticky stack */
+.process{padding:150px 0 120px}
+.process h2{font-size:clamp(2.8rem,5.4vw,5.2rem);padding-bottom:.08em;margin-bottom:56px}
+.pcard{position:sticky;top:calc(var(--nav) + 28px + var(--i) * 22px);height:min(580px,calc(100dvh - 140px));border-radius:28px;display:grid;grid-template-columns:1fr 1.1fr;gap:40px;padding:48px;margin-bottom:48px;transform-origin:50% 0;overflow:hidden}
+.pcard:nth-child(1){background:var(--card)}
+.pcard:nth-child(2){background:var(--card-2)}
+.pcard:nth-child(3){background:var(--card-3)}
+.pcard .ptext{display:flex;flex-direction:column;justify-content:space-between}
+.pcard h3{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5vw,4.6rem);line-height:1}
+.pcard p{color:var(--mute);font-size:1.08rem;max-width:40ch}
+.pcard .pmedia{position:relative;border-radius:var(--r);overflow:hidden}
+.pcard .pmedia>img{width:100%;height:100%;object-fit:cover}
+.cal{height:100%;background:var(--bg);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px}
+.cal-head{display:flex;justify-content:space-between;align-items:center;font-weight:500}
+.cal-head span{font-size:13px;color:var(--mute);font-weight:400}
+.cal-grid{flex:1;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:auto repeat(4,1fr);gap:6px}
+.cal-grid .dow{font-size:11px;color:var(--mute);text-align:center;align-self:end}
+.day{border-radius:10px;border:1px solid var(--line);padding:6px;display:flex;flex-direction:column;justify-content:space-between;font-size:11px;color:var(--mute);min-height:0}
+.chip{font-size:10.5px;border-radius:999px;padding:2px 7px;align-self:flex-start;white-space:nowrap;font-weight:500}
+.chip.reel{background:var(--ink);color:var(--bg)}
+.chip.carousel{border:1px solid var(--ink);color:var(--ink)}
+.chip.story{background:var(--card-3);color:var(--ink)}
+.chip.promo{background:var(--accent);color:#fff}
+.stack2{position:absolute;inset:0;display:grid;grid-template-columns:1.2fr 1fr;gap:10px}
+.stack2 img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.stack2 img:last-child{height:70%;align-self:end}
+@media (max-width:900px){
+  .process{padding:96px 0 60px}
+  .pcard{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:auto;min-height:0;padding:28px 22px;gap:24px;position:relative;top:auto}
+  .pcard .pmedia{height:320px}
+  .pcard p{margin-top:14px}
+  .cal{padding:14px}
+  .chip{font-size:0;width:100%;height:5px;padding:0}
+}
+
+/* Contact */
+.contact{padding:150px 0 120px;overflow:hidden}
+.contact-title{font-size:clamp(4rem,13vw,13rem);line-height:.95;letter-spacing:-.035em;padding-bottom:.1em;transform-origin:0 100%}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;margin-top:64px;align-items:start}
+.contact-copy p{font-size:1.2rem;color:var(--mute);max-width:36ch;font-weight:300}
+.contact-copy ul{list-style:none;margin-top:36px;display:grid;gap:16px}
+.contact-copy li{display:flex;gap:14px;align-items:center}
+.contact-copy li i{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:19px;flex:none}
+form{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+label,.flabel{font-size:14px;font-weight:500}
+label small{color:var(--mute);font-weight:400}
+input,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1px solid transparent;border-radius:14px;padding:14px 16px;transition:border-color .3s,background .3s}
+input::placeholder,textarea::placeholder{color:var(--mute)}
+input:focus,textarea:focus{outline:none;border-color:var(--ink);background:var(--bg)}
+textarea{min-height:120px;resize:vertical}
+.err{font-size:13px;color:var(--accent);min-height:0;display:none}
+.field.bad .err{display:block}
+.field.bad input,.field.bad .chips{border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;border:1px solid transparent;border-radius:16px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);font-weight:400;font-size:15px;transition:background .3s,color .3s,border-color .3s}
+.chips input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.submit{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.submit .btn{border:0}
+.submit .btn[disabled]{opacity:.6}
+.done{display:none;padding:48px 36px;border-radius:var(--r);background:var(--card)}
+.done i{font-size:40px;color:var(--accent)}
+.done h3{font-family:var(--serif);font-weight:500;font-size:2.4rem;margin:14px 0 6px;line-height:1.1}
+.done p{color:var(--mute)}
+.sent form{display:none}.sent .done{display:block}
+@media (max-width:900px){
+  .contact{padding:96px 0 80px}
+  .contact-grid{grid-template-columns:1fr;gap:48px;margin-top:36px}
+  form{grid-template-columns:1fr}
+}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:56px 0 40px}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.foot .logo{align-items:flex-start}
+.foot .logo .mono{font-size:64px}
+.foot .logo .sub{font-size:11px}
+.foot nav{display:flex;gap:28px;color:var(--mute);font-size:15px;flex-wrap:wrap}
+.foot nav a:hover{color:var(--ink)}
+.fine{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:44px;font-size:13px;color:var(--mute)}
+
+@media (prefers-reduced-motion: reduce){
+  .feed-track{animation:none}
+  *{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="LS Media Lab home"><span class="mono">LS</span><span class="sub">Media Lab</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a><a href="#work">Work</a><a href="#services">Services</a><a href="#results">Results</a><a href="#process">Process</a>
+    </nav>
+    <a href="#contact" class="btn btn-ink">Work with us</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow h-in">Social media management &amp; content creation</p>
+        <h1 class="display" id="heroTitle">Your brand, showing up <em>every</em> single day.</h1>
+        <p class="lede h-in">We plan, shoot, post and reply, so your pages stay busy while you run the business.</p>
+        <div class="cta-row h-in">
+          <a href="#contact" class="btn btn-ink">Work with us <i class="ph ph-arrow-right"></i></a>
+          <a href="#work" class="btn btn-ghost">See the work</a>
+        </div>
+      </div>
+
+      <div class="hero-stage" aria-label="Preview of a managed Instagram page">
+        <div class="stage-photo"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=70" alt="Facial treatment being filmed for a spa's social content" fetchpriority="high"></div>
+
+        <div class="phone">
+          <div class="screen">
+            <div class="notch"></div>
+            <div class="app-top"><span>lsmedialab <i class="ph ph-caret-down" style="font-size:12px"></i></span><span style="display:flex;gap:14px"><i class="ph ph-plus-square"></i><i class="ph ph-list"></i></span></div>
+            <div class="profile">
+              <div class="avatar"><span>LS</span></div>
+              <div class="bio"><b>LS Media Lab</b>Social media management<br>&amp; content creation<br><span>Bookings open for next month</span></div>
+            </div>
+            <div class="highlights" id="highlights"></div>
+            <div class="tabs-ig"><span class="on"><i class="ph ph-squares-four"></i></span><span><i class="ph ph-film-slate"></i></span><span><i class="ph ph-user-square"></i></span></div>
+            <div class="feed" title="Double-tap a post"><div class="feed-track" id="feed"></div></div>
+          </div>
+        </div>
+
+        <div class="toast t1"><div class="ic"><i class="ph ph-calendar-check"></i></div><div><b>Reel scheduled</b><span>Tuesday, 6:30 pm</span></div></div>
+        <div class="toast t2"><div class="ic red"><i class="ph-fill ph-heart"></i></div><div><b>Your post is picking up</b><span>Likes coming in fast</span></div></div>
+        <div class="toast t3"><div class="ic"><i class="ph ph-chat-circle-dots"></i></div><div><b>New message</b><span>"Do you have Saturday slots?"</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <section class="strip" aria-label="Content we create">
+    <div class="wrap strip-grid">
+      <figure data-speed="-14"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=70" alt="Spa massage with oil" loading="lazy"></figure>
+      <figure data-speed="8"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=70" alt="Plated food shot from above" loading="lazy"></figure>
+      <figure data-speed="-22"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=700&q=70" alt="Wedding reception table with flowers" loading="lazy"></figure>
+      <figure data-speed="12"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=70" alt="Freshly styled hair" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <h2 class="display">About <em>LS Media Lab</em></h2>
+        <p class="about-text" id="aboutText"><strong>LS Media Lab</strong> is a social media management and content creation agency dedicated to helping businesses build a strong, engaging presence online. We take the stress out of managing social media by creating eye-catching content, developing strategic content plans, managing platforms, scheduling posts, and keeping your audience engaged. Whether you're a small business owner who doesn't have the time to manage your pages or a growing brand looking to show up more consistently online, LS Media Lab works behind the scenes to bring your brand to life so you can focus on what you do best.</p>
+      </div>
+      <aside class="about-side">
+        <figure><img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=70" alt="Laptop on a desk set up for content planning" loading="lazy"></figure>
+        <p>Behind the scenes on every account: planning, shooting, editing, posting and replying.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="wrap work-intro-m">
+      <h2 class="display">Our <em>work</em></h2>
+      <p>Content for spas, kitchens, salons, planners and homes.</p>
+    </div>
+    <div class="work-pin">
+      <div class="work-track" id="workTrack">
+        <div class="work-intro">
+          <h2 class="display">Our<br><em>work</em></h2>
+          <p>Content for spas, kitchens, salons, wedding planners and homes. Every account gets its own look and its own voice.</p>
+        </div>
+
+        <article class="wcard">
+          <div class="wimg"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=900&q=70" alt="Spa facial treatment" loading="lazy"></div>
+          <div class="wmeta"><div><h3>Wellness &amp; spa</h3><p>Treatment reels, calm product shots and booking reminders that fill the week.</p><ul class="tags"><li>Reels</li><li>Carousels</li><li>Stories</li></ul></div></div>
+        </article>
+        <article class="wcard">
+          <div class="wimg"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=70" alt="Restaurant plate being served" loading="lazy"></div>
+          <div class="wmeta"><div><h3>Food &amp; restaurants</h3><p>Menu drops, kitchen behind-the-scenes and weekend specials people actually crave.</p><ul class="tags"><li>Food shoots</li><li>Reels</li><li>Promos</li></ul></div></div>
+        </article>
+        <article class="wcard">
+          <div class="wimg"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=70" alt="Glam makeup close-up" loading="lazy"></div>
+          <div class="wmeta"><div><h3>Beauty &amp; glam</h3><p>Transformations, product flat lays and client features for salons and artists.</p><ul class="tags"><li>Before &amp; after</li><li>Reels</li></ul></div></div>
+        </article>
+        <article class="wcard">
+          <div class="wimg"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=70" alt="Couple at a wedding celebration" loading="lazy"></div>
+          <div class="wmeta"><div><h3>Weddings &amp; events</h3><p>Same-week highlight reels and décor features that keep planners booked out.</p><ul class="tags"><li>Event coverage</li><li>Highlights</li></ul></div></div>
+        </article>
+        <article class="wcard">
+          <div class="wimg"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=70" alt="Modern home exterior at dusk" loading="lazy"></div>
+          <div class="wmeta"><div><h3>Interiors &amp; homes</h3><p>Walkthrough videos and detail shots for builders, cabinet makers and realtors.</p><ul class="tags"><li>Walkthroughs</li><li>Carousels</li></ul></div></div>
+        </article>
+        <div class="wcard-end">
+          <h3>Your brand <em>could be</em> next.</h3>
+          <a href="#contact" class="btn btn-ink" style="align-self:flex-start">Work with us <i class="ph ph-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee" aria-label="Industries we work with">
+    <div class="marquee-track" id="marquee">
+      <div class="marquee-set">
+        <span>Spas</span><i class="ph ph-asterisk"></i><span>Restaurants</span><i class="ph ph-asterisk"></i><span>Salons</span><i class="ph ph-asterisk"></i><span>Bridal</span><i class="ph ph-asterisk"></i><span>Bakeries</span><i class="ph ph-asterisk"></i><span>Boutiques</span><i class="ph ph-asterisk"></i><span>Real estate</span><i class="ph ph-asterisk"></i><span>Fitness</span><i class="ph ph-asterisk"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <h2 class="display">What <em>we do</em></h2>
+      <p class="intro">Pick one, or hand us the whole thing.</p>
+      <div class="svc-list" id="svcList"></div>
+    </div>
+    <div class="svc-preview" id="svcPreview" aria-hidden="true"></div>
+  </section>
+
+  <!-- RESULTS GRAPH -->
+  <section class="growth" id="results">
+    <div class="wrap">
+      <div class="growth-head">
+        <h2 class="display">Consistency <em>compounds.</em></h2>
+        <p class="intro">Posting when there's time gets you random results. A plan builds momentum, month after month.</p>
+      </div>
+      <div class="chart-bar">
+        <div class="seg" role="tablist" aria-label="Metric">
+          <button role="tab" aria-selected="true" data-k="reach">Reach</button>
+          <button role="tab" aria-selected="false" data-k="engagement">Engagement</button>
+          <button role="tab" aria-selected="false" data-k="enquiries">Enquiries</button>
+        </div>
+        <div class="legend"><span><i class="sw"></i>With LS Media Lab</span><span><i class="sw dash"></i>Posting when there's time</span></div>
+      </div>
+      <div class="chart">
+        <div class="chart-inner" id="chart">
+          <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".22"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
+            <g class="grid"><line x1="0" y1="0" x2="1000" y2="0"/><line x1="0" y1="100" x2="1000" y2="100"/><line x1="0" y1="200" x2="1000" y2="200"/><line x1="0" y1="300" x2="1000" y2="300"/><line x1="0" y1="400" x2="1000" y2="400"/></g>
+            <path class="area" id="area"/>
+            <path class="line-adhoc" id="lineAdhoc"/>
+            <path class="line-plan" id="linePlan"/>
+          </svg>
+          <div class="ms m1" data-i="1"><div class="lab">Content plan + first shoot</div><div class="dot"></div></div>
+          <div class="ms m3" data-i="3"><div class="lab">Reels in a steady rhythm</div><div class="dot"></div></div>
+          <div class="ms m6 right" data-i="6"><div class="lab">DMs turning into bookings</div><div class="dot"></div></div>
+          <div class="xlabels"><span>Start</span><span>Month 1</span><span>Month 2</span><span>Month 3</span><span>Month 4</span><span>Month 5</span><span>Month 6</span></div>
+        </div>
+      </div>
+      <p class="chart-note">Illustrative example, not a client result. Every brand grows at its own pace.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <h2 class="display">How a month <em>works</em></h2>
+      <div class="pstack">
+        <article class="pcard" style="--i:0">
+          <div class="ptext"><h3>Plan</h3><p>We map out the month around your offers, launches and busy seasons. You approve everything before it goes live.</p></div>
+          <div class="pmedia"><div class="cal"><div class="cal-head">November content plan <span>12 posts</span></div><div class="cal-grid" id="cal"></div></div></div>
+        </article>
+        <article class="pcard" style="--i:1">
+          <div class="ptext"><h3>Create</h3><p>One shoot day becomes a month of content. We direct, film and edit, then write captions that sound like you.</p></div>
+          <div class="pmedia"><div class="stack2"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=70" alt="Camera ready for a content shoot" loading="lazy"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=500&q=70" alt="Styled dessert shot" loading="lazy"></div></div>
+        </article>
+        <article class="pcard" style="--i:2">
+          <div class="ptext"><h3>Post &amp; reply</h3><p>Posts go out on schedule. We answer comments and DMs, then send you a simple recap at the end of the month.</p></div>
+          <div class="pmedia"><img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=900&q=70" alt="Instagram app icon" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2 class="display contact-title" id="markTitle">Make your <em>mark.</em></h2>
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <p>Tell us a little about your business. We'll come back with content ideas and a quote that fits.</p>
+          <ul>
+            <li><i class="ph ph-instagram-logo"></i><span>Send us a DM on Instagram</span></li>
+            <li><i class="ph ph-envelope-simple"></i><span>Or fill in the form and we'll reach out</span></li>
+          </ul>
+        </div>
+        <div id="formWrap">
+          <form id="form" novalidate>
+            <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" placeholder="First and last name"><span class="err">Please add your name.</span></div>
+            <div class="field"><label for="f-biz">Business name</label><input id="f-biz" name="business" autocomplete="organization" placeholder="What's the business called?"><span class="err">Please add your business name.</span></div>
+            <div class="field full"><label for="f-ig">Instagram or Facebook page <small>(optional)</small></label><input id="f-ig" name="page" placeholder="@yourbusiness"></div>
+            <div class="field full" id="needField">
+              <span class="flabel" id="need-l">What do you need?</span>
+              <div class="chips" role="group" aria-labelledby="need-l">
+                <label><input type="checkbox" name="need" value="Content creation"><span>Content creation</span></label>
+                <label><input type="checkbox" name="need" value="Page management"><span>Page management</span></label>
+                <label><input type="checkbox" name="need" value="Both"><span>Both</span></label>
+                <label><input type="checkbox" name="need" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+              <span class="err">Pick at least one.</span>
+            </div>
+            <div class="field full"><label for="f-msg">Anything else? <small>(optional)</small></label><textarea id="f-msg" name="message" placeholder="Goals, launches coming up, pages you love..."></textarea></div>
+            <div class="submit"><button class="btn btn-ink" type="submit">Send enquiry <i class="ph ph-paper-plane-tilt"></i></button></div>
+          </form>
+          <div class="done" role="status" aria-live="polite"><i class="ph-fill ph-check-circle"></i><h3 id="doneTitle">Thank you.</h3><p>We'll be in touch soon with ideas for your page. (Demo site: nothing was sent.)</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="#top" class="logo" aria-label="LS Media Lab"><span class="mono">LS</span><span class="sub">Media Lab</span></a>
+      <nav aria-label="Footer"><a href="#about">About</a><a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="#contact">Work with us</a></nav>
+    </div>
+    <div class="fine"><span>© 2026 LS Media Lab. Social media management &amp; content creation.</span><span>Concept site by Portside Digital</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const U = (id, w) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=65`;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasG = typeof gsap !== 'undefined';
+
+  /* Phone highlights + feed */
+  const hl = [['1540555700478-4be289fbecef','Spa'],['1546069901-ba9599a7e63c','Food'],['1465495976277-4387d4b0b4c6','Bridal'],['1487412947147-5cebf100ffc2','Glam'],['1586023492125-27b2c045efd7','Homes']];
+  document.getElementById('highlights').innerHTML = hl.map(([id,t]) => `<div class="hl"><img src="${U(id,120)}" alt=""><span>${t}</span></div>`).join('');
+  const feedIds = ['1570172619644-dfd03ed5d881','1504674900247-0877df9cc836','1519741497674-611481863552','1522337360788-8b13dee7a37e','1509042239860-f550ce710b93','1600585154340-be6161a56a0c','1544161515-4ab6ce6db874','1606787366850-de6330128bfc','1531746020798-e6953c6e8e04','1515886657613-9f3515b0c78f','1555396273-367ea4eb4db5','1494790108377-be9c29b29330'];
+  const tiles = feedIds.concat(feedIds).map((id,i) => `<div class="tile">${i%4===1?'<i class="ph-fill ph-film-slate reel"></i>':''}<img src="${U(id,260)}" alt="" loading="lazy"><i class="ph-fill ph-heart heart"></i></div>`).join('');
+  const feed = document.getElementById('feed');
+  feed.innerHTML = tiles;
+  const burst = tile => {
+    const h = tile.querySelector('.heart');
+    if (!hasG || reduce) return;
+    gsap.fromTo(h, {scale:0, opacity:1, rotate:-12}, {scale:1.15, rotate:0, duration:.45, ease:'back.out(3)', onComplete:() => gsap.to(h, {scale:.9, opacity:0, y:-18, duration:.5, delay:.25, clearProps:'y'})});
+  };
+  feed.addEventListener('dblclick', e => { const t = e.target.closest('.tile'); if (t) burst(t); });
+  let lastTap = 0;
+  feed.addEventListener('touchend', e => { const now = Date.now(); if (now - lastTap < 320) { const t = e.target.closest('.tile'); if (t) burst(t); } lastTap = now; });
+
+  /* Services */
+  const svcs = [
+    ['Content creation','Photo and video shoots, reels, edits and captions written in your voice.','1516035069371-29a1b244cc32'],
+    ['Content planning','A monthly calendar built around your offers, launches and busy seasons.','1499951360447-b19be8fe80f5'],
+    ['Page management','Instagram, Facebook and TikTok kept current, tidy and on-brand.','1611162617213-7d7a39e9b1d7'],
+    ['Scheduling & posting','Posts go out when your audience is actually scrolling, not when you remember.','1611926653458-09294b3142bf'],
+    ['Comments & DMs','Questions answered quickly, so interest turns into bookings and orders.','1562577309-4932fdd64cd1'],
+    ['Brand look & feel','Templates, colours and fonts that make every post recognisably yours.','1586023492125-27b2c045efd7']
+  ];
+  const list = document.getElementById('svcList'), prev = document.getElementById('svcPreview');
+  list.innerHTML = svcs.map(([n,d,id],i) => `<button class="svc-row" data-i="${i}" aria-expanded="false" aria-controls="svc-m-${i}"><span class="svc-name">${n.replace('&','&amp;')}</span><span class="svc-desc">${d}</span><i class="ph ph-arrow-up-right"></i></button><div class="svc-media" id="svc-m-${i}"><div><p>${d}</p><img src="${U(id,800)}" alt="" loading="lazy"></div></div>`).join('');
+  prev.innerHTML = svcs.map(([,,id]) => `<img src="${U(id,520)}" alt="">`).join('');
+  const prevImgs = prev.querySelectorAll('img');
+  list.querySelectorAll('.svc-row').forEach(row => {
+    row.addEventListener('mouseenter', () => prevImgs.forEach((im,k) => im.classList.toggle('on', k == row.dataset.i)));
+    row.addEventListener('click', () => {
+      if (matchMedia('(min-width:901px)').matches) { document.getElementById('contact').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); return; }
+      const open = row.getAttribute('aria-expanded') === 'true';
+      row.setAttribute('aria-expanded', String(!open));
+      document.getElementById(row.getAttribute('aria-controls')).classList.toggle('open', !open);
+    });
+  });
+
+  /* Calendar: Mon 2 Nov to Sun 29 Nov 2026 */
+  const plan = {3:'reel',5:'carousel',7:'story',10:'reel',12:'promo',14:'carousel',17:'reel',19:'story',21:'carousel',24:'reel',26:'promo',28:'carousel'};
+  const names = {reel:'Reel',carousel:'Carousel',story:'Story',promo:'Promo'};
+  const cal = document.getElementById('cal');
+  cal.innerHTML = ['M','T','W','T','F','S','S'].map(d => `<div class="dow">${d}</div>`).join('') +
+    Array.from({length:28}, (_,k) => { const d = k + 2, t = plan[d]; return `<div class="day"><span>${d}</span>${t ? `<span class="chip ${t}">${names[t]}</span>` : ''}</div>`; }).join('');
+
+  /* Chart */
+  const data = {
+    reach:{plan:[8,13,21,33,49,68,88], adhoc:[8,12,9,15,11,16,13]},
+    engagement:{plan:[10,17,26,39,52,66,80], adhoc:[10,14,10,15,12,16,12]},
+    enquiries:{plan:[4,7,14,24,39,57,78], adhoc:[4,6,4,8,5,8,6]}
+  };
+  const W = 1000, H = 400, pt = (v,i,n) => [i * W / (n - 1), H - v / 100 * H];
+  const pathD = vals => {
+    const p = vals.map((v,i) => pt(v,i,vals.length));
+    let d = `M${p[0][0]},${p[0][1]}`;
+    for (let i = 0; i < p.length - 1; i++) {
+      const p0 = p[i-1] || p[i], p1 = p[i], p2 = p[i+1], p3 = p[i+2] || p2;
+      const c1 = [p1[0] + (p2[0]-p0[0])/6, p1[1] + (p2[1]-p0[1])/6];
+      const c2 = [p2[0] - (p3[0]-p1[0])/6, p2[1] - (p3[1]-p1[1])/6];
+      d += ` C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${p2[0]},${p2[1]}`;
+    }
+    return d;
+  };
+  const areaD = vals => pathD(vals) + ` L${W},${H} L0,${H} Z`;
+  const linePlan = document.getElementById('linePlan'), lineAdhoc = document.getElementById('lineAdhoc'), area = document.getElementById('area');
+  const ms = [...document.querySelectorAll('.ms')];
+  const placeMs = k => ms.forEach(m => { const i = +m.dataset.i, v = data[k].plan[i]; m.style.left = (i / 6 * 100) + '%'; m.style.top = (100 - v) + '%'; });
+  let cur = 'reach';
+  linePlan.setAttribute('d', pathD(data.reach.plan)); lineAdhoc.setAttribute('d', pathD(data.reach.adhoc)); area.setAttribute('d', areaD(data.reach.plan));
+  placeMs('reach');
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.k === cur) return;
+    cur = b.dataset.k;
+    document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+    const k = data[cur];
+    if (hasG && !reduce) {
+      gsap.to(linePlan, {attr:{d:pathD(k.plan)}, duration:.9, ease:'expo.out'});
+      gsap.to(lineAdhoc, {attr:{d:pathD(k.adhoc)}, duration:.9, ease:'expo.out'});
+      gsap.to(area, {attr:{d:areaD(k.plan)}, duration:.9, ease:'expo.out'});
+    } else {
+      linePlan.setAttribute('d', pathD(k.plan)); lineAdhoc.setAttribute('d', pathD(k.adhoc)); area.setAttribute('d', areaD(k.plan));
+    }
+    placeMs(cur);
+  }));
+
+  /* Form */
+  const form = document.getElementById('form');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const fName = form.elements['name'], fBiz = form.elements['business'];
+    const name = fName.value.trim(), biz = fBiz.value.trim(), need = form.querySelectorAll('input[name=need]:checked').length;
+    const set = (el, bad) => el.classList.toggle('bad', bad);
+    set(fName.closest('.field'), !name); set(fBiz.closest('.field'), !biz); set(document.getElementById('needField'), !need);
+    if (!name || !biz || !need) { form.querySelector('.bad input')?.focus(); return; }
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.firstChild.textContent = 'Sending ';
+    setTimeout(() => {
+      document.getElementById('doneTitle').textContent = `Thank you, ${name.split(' ')[0]}.`;
+      document.getElementById('formWrap').classList.add('sent');
+    }, 900);
+  });
+  form.querySelectorAll('input').forEach(i => i.addEventListener('input', () => i.closest('.field')?.classList.remove('bad')));
+
+  /* Nav state */
+  const nav = document.getElementById('nav');
+  new IntersectionObserver(([en]) => nav.classList.toggle('scrolled', !en.isIntersecting)).observe(document.querySelector('.hero h1'));
+
+  if (!hasG || reduce) {
+    document.querySelectorAll('.toast').forEach(t => t.style.opacity = 1);
+    document.querySelectorAll('.about-text .word').forEach(w => w.style.opacity = 1);
+    return;
+  }
+
+  /* Motion */
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Scroll progress
+  gsap.to('.progress', {scaleX:1, ease:'none', scrollTrigger:{start:0, end:'max', scrub:.3}});
+
+  // Hero entrance: words rise in sequence
+  const h1 = document.getElementById('heroTitle');
+  h1.innerHTML = h1.innerHTML.split(/(<em>.*?<\/em>|\s+)/).filter(s => s && s.trim()).map(s => `<span class="w"><span>${s}</span></span>`).join(' ');
+  const tl = gsap.timeline({defaults:{ease:'expo.out'}});
+  tl.from('#heroTitle .w>span', {yPercent:110, duration:1.2, stagger:.06})
+    .from('.h-in', {y:24, opacity:0, duration:1, stagger:.08}, .15)
+    .from('.stage-photo', {clipPath:'inset(100% 0 0 0)', duration:1.4, ease:'expo.inOut'}, .1)
+    .from('.phone', {y:80, opacity:0, rotate:4, duration:1.4}, .3);
+  gsap.to('.stage-photo img', {scale:1, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+  gsap.to('.phone', {y:-60, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+
+  // Toasts cycle: plan, engagement, enquiry
+  const toasts = gsap.utils.toArray('.toast');
+  const ttl = gsap.timeline({repeat:-1, delay:1.6});
+  toasts.forEach(t => {
+    ttl.fromTo(t, {opacity:0, x:-24, scale:.96}, {opacity:1, x:0, scale:1, duration:.7, ease:'back.out(1.6)'})
+       .to(t, {opacity:0, x:12, duration:.5, ease:'power2.in'}, '+=2.4');
+  });
+  // Auto-like a random tile now and then
+  const allTiles = feed.querySelectorAll('.tile');
+  setInterval(() => { if (!document.hidden) burst(allTiles[Math.floor(Math.random() * allTiles.length)]); }, 3200);
+
+  // Strip parallax
+  gsap.utils.toArray('.strip figure').forEach(f => {
+    gsap.to(f, {yPercent:+f.dataset.speed, ease:'none', scrollTrigger:{trigger:'.strip', start:'top bottom', end:'bottom top', scrub:true}});
+    gsap.to(f.querySelector('img'), {scale:1, ease:'none', scrollTrigger:{trigger:f, start:'top bottom', end:'bottom top', scrub:true}});
+  });
+
+  // About: words light up as you read
+  const at = document.getElementById('aboutText');
+  const wrapWords = node => {
+    [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(s => {
+          if (!s) return;
+          if (/^\s+$/.test(s)) frag.appendChild(document.createTextNode(s));
+          else { const sp = document.createElement('span'); sp.className = 'word'; sp.textContent = s; frag.appendChild(sp); }
+        });
+        n.replaceWith(frag);
+      } else wrapWords(n);
+    });
+  };
+  wrapWords(at);
+  gsap.to('#aboutText .word', {opacity:1, stagger:.1, ease:'none', scrollTrigger:{trigger:at, start:'top 78%', end:'bottom 52%', scrub:true}});
+  gsap.from('.about h2', {y:40, opacity:0, duration:1.2, ease:'expo.out', scrollTrigger:{trigger:'.about', start:'top 75%'}});
+
+  // Section headings rise in
+  gsap.utils.toArray('.services h2, .growth h2, .process h2').forEach(h => gsap.from(h, {y:50, opacity:0, duration:1.2, ease:'expo.out', scrollTrigger:{trigger:h, start:'top 85%'}}));
+  gsap.from('.svc-row', {y:30, opacity:0, duration:.9, stagger:.07, ease:'expo.out', scrollTrigger:{trigger:'#svcList', start:'top 80%'}});
+
+  const mm = gsap.matchMedia();
+  mm.add('(min-width:901px)', () => {
+    // Work: vertical scroll pans the track sideways
+    const track = document.getElementById('workTrack');
+    const dist = () => track.scrollWidth - innerWidth;
+    const pan = gsap.to(track, {x:() => -dist(), ease:'none', scrollTrigger:{trigger:'.work-pin', start:'top top', end:() => '+=' + dist(), pin:true, scrub:1, invalidateOnRefresh:true}});
+    gsap.utils.toArray('.wimg img').forEach(img => gsap.fromTo(img, {xPercent:-6}, {xPercent:6, ease:'none', scrollTrigger:{trigger:img.parentElement, containerAnimation:pan, start:'left right', end:'right left', scrub:true}}));
+
+    // Services: preview follows the cursor
+    const xTo = gsap.quickTo(prev, 'x', {duration:.6, ease:'power3'}), yTo = gsap.quickTo(prev, 'y', {duration:.6, ease:'power3'});
+    gsap.set(prev, {xPercent:-50, yPercent:-50});
+    const move = e => { xTo(e.clientX + 150); yTo(e.clientY); };
+    const show = () => gsap.to(prev, {opacity:1, scale:1, duration:.4, ease:'power3.out'});
+    const hide = () => gsap.to(prev, {opacity:0, scale:.8, duration:.3});
+    list.addEventListener('mousemove', move); list.addEventListener('mouseenter', show); list.addEventListener('mouseleave', hide);
+
+    // Process: earlier cards sink back as the next one arrives
+    const cards = gsap.utils.toArray('.pcard');
+    cards.forEach((c,i) => { if (i < cards.length - 1) gsap.to(c, {scale:.93, opacity:.55, ease:'none', scrollTrigger:{trigger:cards[i+1], start:'top bottom', end:'top ' + (100 + (i+1)*22) + 'px', scrub:true}}); });
+    return () => { list.removeEventListener('mousemove', move); list.removeEventListener('mouseenter', show); list.removeEventListener('mouseleave', hide); };
+  });
+
+  // Marquee: runs constantly, flips direction with scroll
+  const mq = document.getElementById('marquee');
+  mq.appendChild(mq.firstElementChild.cloneNode(true));
+  const mqTween = gsap.to(mq, {xPercent:-50, duration:34, ease:'none', repeat:-1});
+  mqTween.totalTime(mqTween.duration() * 50);
+  ScrollTrigger.create({trigger:'.marquee', start:'top bottom', end:'bottom top', onUpdate:self => gsap.to(mqTween, {timeScale:self.direction * (1 + Math.min(Math.abs(self.getVelocity()) / 600, 4)), duration:.3, overwrite:true, onComplete:() => gsap.to(mqTween, {timeScale:self.direction, duration:1})})});
+
+  // Chart draws in when it scrolls into view
+  const len = linePlan.getTotalLength();
+  gsap.set(linePlan, {strokeDasharray:len, strokeDashoffset:len});
+  gsap.set([area, lineAdhoc], {opacity:0});
+  gsap.set(ms, {scale:0});
+  gsap.timeline({scrollTrigger:{trigger:'.chart', start:'top 70%'}})
+    .to(lineAdhoc, {opacity:.8, duration:.8})
+    .to(linePlan, {strokeDashoffset:0, duration:2.2, ease:'power2.inOut', onComplete:() => gsap.set(linePlan, {strokeDasharray:'none'})}, .2)
+    .to(area, {opacity:1, duration:1}, 1.4)
+    .to(ms, {scale:1, duration:.5, stagger:.2, ease:'back.out(2)'}, .6);
+
+  // Calendar chips pop in
+  gsap.from('.cal .chip', {scale:0, opacity:0, duration:.5, stagger:.06, ease:'back.out(2)', scrollTrigger:{trigger:'.cal', start:'top 75%'}});
+
+  // Contact title grows into place
+  gsap.from('#markTitle', {scale:.82, opacity:.2, ease:'none', scrollTrigger:{trigger:'.contact', start:'top bottom', end:'top 30%', scrub:true}});
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
